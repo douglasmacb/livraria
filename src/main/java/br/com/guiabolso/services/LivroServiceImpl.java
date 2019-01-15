@@ -1,5 +1,7 @@
 package br.com.guiabolso.services;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +20,13 @@ public class LivroServiceImpl implements LivroService {
 	}
 
 	@Override
-	public void gravar(Livro livro) {
-		livroRepository.save(livro);
+	public Optional<Livro> obterLivro(Long id) {
+		return livroRepository.findById(id);
+	}
+
+	@Override
+	public Livro gravar(Livro livro) {
+		return livroRepository.save(livro);
 	}
 
 }
