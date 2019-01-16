@@ -15,12 +15,7 @@ public class LivroServiceImpl implements LivroService {
 	public LivroRepository livroRepository;
 	
 	@Override
-	public Iterable<Livro> obterLivros() {
-		return livroRepository.findAll();
-	}
-
-	@Override
-	public Optional<Livro> obterLivro(Long id) {
+	public Optional<Livro> buscar(Long id) {
 		return livroRepository.findById(id);
 	}
 
@@ -28,5 +23,4 @@ public class LivroServiceImpl implements LivroService {
 	public Livro gravar(Livro livro) {
 		return livroRepository.save(livro);
 	}
-
 }

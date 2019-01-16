@@ -5,10 +5,8 @@ import java.util.Optional;
 import br.com.guiabolso.domain.Livro;
 
 public interface LivroService {
-	public Iterable<Livro> obterLivros(); 
 	
-	public Optional<Livro> obterLivro(Long id);
+	public Optional<Livro> buscar(Long id);
 	
 	public Livro gravar(Livro livro);
-	
 }

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @Entity(name = "LIVRO")
 public class Livro implements Serializable {
@@ -16,11 +17,19 @@ public class Livro implements Serializable {
 	private static final long serialVersionUID = 6091972798183480861L;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
+
+	@NotEmpty
 	private String title;
+
+	@NotEmpty
 	private String description;
+
+	@NotEmpty
 	private String ISBN;
+
+	@NotEmpty
 	private String language;
 
 	/**
@@ -66,20 +75,6 @@ public class Livro implements Serializable {
 	}
 
 	/**
-	 * @return the iSBN
-	 */
-	public String getISBN() {
-		return ISBN;
-	}
-
-	/**
-	 * @param iSBN the iSBN to set
-	 */
-	public void setISBN(String iSBN) {
-		ISBN = iSBN;
-	}
-
-	/**
 	 * @return the language
 	 */
 	public String getLanguage() {
@@ -91,6 +86,20 @@ public class Livro implements Serializable {
 	 */
 	public void setLanguage(String language) {
 		this.language = language;
+	}
+
+	/**
+	 * @return the iSBN
+	 */
+	public String getISBN() {
+		return ISBN;
+	}
+
+	/**
+	 * @param iSBN the iSBN to set
+	 */
+	public void setISBN(String iSBN) {
+		ISBN = iSBN;
 	}
 
 }
