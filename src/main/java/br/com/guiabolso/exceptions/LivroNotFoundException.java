@@ -11,6 +11,10 @@ public class LivroNotFoundException extends RuntimeException {
 	 */
 	private static final long serialVersionUID = -5139260401833602486L;
 	
+	public LivroNotFoundException(String message) {
+		super(message);
+	}
+	
 	public LivroNotFoundException(Long id) {
 		super("Livro não encontrado: " + id);
 	}

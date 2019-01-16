@@ -1,6 +1,8 @@
 package br.com.guiabolso.controllers;
 
 import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 import javax.validation.Valid;
@@ -42,12 +44,22 @@ public class LivroController {
 		}
 		return livroService.buscar(id).orElseThrow(() -> new LivroNotFoundException(id));
 	}
-
+	
+	@GetMapping
+	List<Livro> obterLivros() {
+		return livroService.buscar();
+	}
+	
 	@PostMapping
 	ResponseEntity<String> gravar(@Valid @RequestBody Livro livro, Errors errors) {
 
 		if (errors.hasErrors()) {
 			return ResponseEntity.badRequest().body(MensagemHelper.formataMensagensErro(errors));
+		}
+		
+		List<Livro> livros = new ArrayList<Livro>(livroService.buscar(livro.getIsbn()));
+		if(livros != null && livros.size() > 0) {
+			return ResponseEntity.ok().build();
 		}
 		
 		livroService.gravar(livro);
@@ -59,6 +71,4 @@ public class LivroController {
 		
 		return ResponseEntity.created(location).build();
 	}
-	
-
 }

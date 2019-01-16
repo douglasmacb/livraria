@@ -27,10 +27,20 @@ public class Livro implements Serializable {
 	private String description;
 
 	@NotEmpty
-	private String ISBN;
+	private String isbn;
 
 	@NotEmpty
 	private String language;
+
+	public Livro(Long id, @NotEmpty String title, @NotEmpty String description, @NotEmpty String isbn,
+			@NotEmpty String language) {
+		super();
+		this.id = id;
+		this.title = title;
+		this.description = description;
+		this.isbn = isbn;
+		this.language = language;
+	}
 
 	/**
 	 * @return the id
@@ -89,17 +99,17 @@ public class Livro implements Serializable {
 	}
 
 	/**
-	 * @return the iSBN
+	 * @return the isbn
 	 */
-	public String getISBN() {
-		return ISBN;
+	public String getIsbn() {
+		return isbn;
 	}
 
 	/**
-	 * @param iSBN the iSBN to set
+	 * @param isbn the isbn to set
 	 */
-	public void setISBN(String iSBN) {
-		ISBN = iSBN;
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
 	}
 
 }
