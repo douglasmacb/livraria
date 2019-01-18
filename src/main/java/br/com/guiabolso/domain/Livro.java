@@ -32,6 +32,9 @@ public class Livro implements Serializable {
 	@NotEmpty
 	private String language;
 
+	public Livro() {
+	}
+	
 	public Livro(Long id, @NotEmpty String title, @NotEmpty String description, @NotEmpty String isbn,
 			@NotEmpty String language) {
 		super();

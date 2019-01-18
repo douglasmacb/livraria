@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import br.com.guiabolso.domain.Livro;
+import br.com.guiabolso.domain.LivroResponse;
 import br.com.guiabolso.exceptions.LivroNotFoundException;
 import br.com.guiabolso.helpers.MensagemHelper;
 import br.com.guiabolso.services.LivroService;
@@ -35,19 +36,18 @@ public class LivroController {
 	private LivroService livroService;
 	
 	@GetMapping(path = "/{id}")
-	Livro obterLivro(@PathVariable Long id) {
+	ResponseEntity<Livro> obterLivro(@PathVariable Long id) {
 		
 		Optional<Livro> livro = livroService.buscar(id);
-		
 		if (!livro.isPresent()) {
 			throw new LivroNotFoundException(id);
 		}
-		return livroService.buscar(id).orElseThrow(() -> new LivroNotFoundException(id));
+		return ResponseEntity.ok(livroService.buscar(id).orElseThrow(() -> new LivroNotFoundException(id)));
 	}
 	
 	@GetMapping
-	List<Livro> obterLivros() {
-		return livroService.buscar();
+	ResponseEntity<LivroResponse> obterLivros() {
+		return ResponseEntity.ok(livroService.buscar());
 	}
 	
 	@PostMapping

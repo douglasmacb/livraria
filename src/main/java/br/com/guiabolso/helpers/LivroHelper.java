@@ -1,13 +1,11 @@
 package br.com.guiabolso.helpers;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 import java.util.regex.Pattern;
 
-import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -26,46 +24,55 @@ public class LivroHelper {
 			Pattern.compile(regex3), Pattern.compile(regex4), Pattern.compile(regex5));
 	
 	public static List<Livro> montarLivros(Document documento) {
-		List<Livro> livros = new ArrayList<Livro>();
-		List<String> linksPaginaLivros = new ArrayList<String>();
-
 		Elements links = null;
 		Elements titulos = null;
-		Elements languages = null;
+		Elements linguagens = null;
 		Elements artigo = null;
+		 
+		List<Livro> livros = new ArrayList<Livro>();
+		List<String> linksPaginasLivros = new ArrayList<String>();
 		
 		artigo = documento.select("article");
-		links = artigo.select("a + p").select("a[href]");
-		titulos = artigo.select("h2");
-		languages = documento.getElementsByClass("book-lang");
 		
-		links.forEach(link -> linksPaginaLivros.add(link.attributes().get("href")));
-		
-		String descricoes[] = obterDescricoes(artigo);
-		List<String> listaIsbn = obterListaIsbn(linksPaginaLivros);
-		
-		for(Integer i = 0; i < titulos.size(); i++) {
-			livros.add(new Livro(i.longValue(), titulos.get(i).text(), descricoes[i+1], listaIsbn.get(i), languages.get(i).text()));
+		if(artigo != null && !artigo.isEmpty()) {
+			links = artigo.select("a + p").select("a[href]");
+			titulos = artigo.select("h2");
+			linguagens = documento.getElementsByClass("book-lang");
+			String descricoes[] = obterDescricoes(artigo);
+			
+			if(links != null && !links.isEmpty()) {
+				links.forEach(link -> linksPaginasLivros.add(link.attributes().get("href")));
+			}
+			
+
+			List<String> listaIsbn = obterListaIsbn(linksPaginasLivros);
+			
+			for(Integer i = 0; i < titulos.size(); i++) {
+				livros.add(new Livro(i.longValue()+1, titulos.get(i).text(), descricoes[i+1], "", linguagens.get(i).text()));
+			}
 		}
 		return livros;
 	}
 	
 	public static List<String> obterListaIsbn(List<String> links) {
 		List<String> listaIsbn = new ArrayList<String>();
-		
+		/*
 		for(String url : links) {
 			try {
+				
 				Elements elementos = Jsoup.connect(url).get().getAllElements();
 				
 				for (Element elemento : elementos) {
 					for (Pattern rx : rxs) {
 					}
 				}
+				
 		        
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
+		 */
 		return listaIsbn;
 	}
 

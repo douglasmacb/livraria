@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import br.com.guiabolso.domain.Livro;
+import br.com.guiabolso.domain.LivroResponse;
 
 public interface LivroService {
 	
@@ -13,6 +14,6 @@ public interface LivroService {
 	
 	public Livro gravar(Livro livro);
 	
-	public List<Livro> buscar();		
+	public LivroResponse buscar();		
 
 }
