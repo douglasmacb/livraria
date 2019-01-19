@@ -37,4 +37,4 @@ $ curl -X GET \
 [Douglas Miranda](https://github.com/douglasmacb)
 
 ### License
-Livraria está disponível sob a licença Apache. Veja o arquivo [LICENSE](./LICENSE) para mais informações.
+Livraria está disponível sob a licença Apache 2.0. Veja o arquivo [LICENSE](./LICENSE) para mais informações.
