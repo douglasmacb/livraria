@@ -3,6 +3,15 @@ Livraria GuiaBolso Interview - It's a simple application to find books from Kotl
 
 ## # Step 1
 
+Create a new collection in mongodb
+
+```bash
+use livraria;
+db.createCollection("livro");
+```
+
+## # Step 2
+
 Clone environment from github.
 
 ```bash
@@ -14,6 +23,17 @@ After that, use maven to install
 ```bash
 $ mvn clean install -U
 ```
+
+## # Step 3
+
+Open target folder and run jar file to start the application
+
+```bash
+java -jar livraria-1.0.jar
+```
+
+
+
 ## How to test application
 
 ### Find a Book
