@@ -32,5 +32,3 @@ $ curl -X GET \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' 
   
-  To test using Swagger:
-  Use http://localhost:8092/sdoc.jsp
