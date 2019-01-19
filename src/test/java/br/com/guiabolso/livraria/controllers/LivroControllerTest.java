@@ -28,10 +28,6 @@ public class LivroControllerTest extends LivrariaApplicationTests {
 		this.mockMvc = MockMvcBuilders.standaloneSetup(livroController).build();
 	}
 	
-	@After
-	public void tearDown() { 
-	}
-	
 	@Test
 	public void testGETAllBooks() throws Exception {
 		this.mockMvc.perform(MockMvcRequestBuilders.get("/books")).andExpect(MockMvcResultMatchers.status().isOk());
