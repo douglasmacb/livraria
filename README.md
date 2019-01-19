@@ -1,5 +1,5 @@
 # livraria
-Livraria GuiaBolso Interview - It's a simple application to find books from Kotlin website using regex to get ISBN code.
+Livraria GuiaBolso Interview - It's a simple application to find books from Kotlin main page using regex to get ISBN code.
 
 ## # Step 1
 
