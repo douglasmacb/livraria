@@ -32,3 +32,9 @@ $ curl -X GET \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' 
   
+ 
+## Author
+[Douglas Miranda](https://github.com/douglasmacb)
+
+## License
+Livraria está disponível sob a licença Apache. Veja o arquivo [LICENSE](./LICENSE) para mais informações.
