@@ -31,10 +31,10 @@ $ curl -X GET \
   'http://localhost:8080/books' \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' 
+  ```
   
- 
-## Author
+### Author
 [Douglas Miranda](https://github.com/douglasmacb)
 
-## License
+### License
 Livraria está disponível sob a licença Apache. Veja o arquivo [LICENSE](./LICENSE) para mais informações.
