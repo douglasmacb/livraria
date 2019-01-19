@@ -21,51 +21,44 @@ import br.com.guiabolso.repositories.LivroRepository;
 @Service
 public class LivroServiceImpl implements LivroService {
 
-	Logger logger = LoggerFactory.getLogger(LivroServiceImpl.class);
+	public static final Logger LOGGER = LoggerFactory.getLogger(LivroServiceImpl.class);
 	
 	@Autowired
 	public LivroRepository livroRepository;
 	
-	private final String url = "https://kotlinlang.org/docs/books.html";
-	
 	@Override
-	public Optional<Livro> buscar(Long id) {
+	public Optional<Livro> buscar(String id) {
+		LOGGER.info("Acessando o banco de dados para buscar o livro id : {} ", id);
 		return livroRepository.findById(id);
 	}
 	
 	@Override
-	public List<Livro> buscar(String isbn) {
-		return livroRepository.findByIsbn(isbn);
-	}
-
-	@Override
 	public Livro gravar(Livro livro) {
+		LOGGER.info("Gravando o livro : {} ", livro.getTitle());
 		return livroRepository.save(livro);
 	}
 
 	@Override
 	public LivroResponse buscar() {
 		
+		LOGGER.info("Buscando os livros do website : {} ", LivroHelper.URL_BOOKS);
 		LivroResponse response = new LivroResponse();
 		List<Livro> livros = new ArrayList<Livro>();
 		
 		try {
-			
-			Document documento = Jsoup.connect(url).get();
+			Document documento = Jsoup.connect(LivroHelper.URL_BOOKS).get();
 			if(documento != null) {
-				livros = LivroHelper.montarLivros(documento);
+				livros = LivroHelper.montaLivros(documento);
 				if(livros != null) {
 					response.setBooks(livros);
 					response.setNumberBooks(livros.size());
 				}
 			}
 		} catch (IOException e) {
-			logger.error(e.getMessage());
+			LOGGER.error(e.getMessage());
 			throw new LivroNotFoundException(e.getMessage());
 		}
 		return response;
 	}
-	
-
 
 }

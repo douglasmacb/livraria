@@ -2,13 +2,12 @@ package br.com.guiabolso.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
 
-@Entity(name = "LIVRO")
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+
+@Document(collection = "livro")
 public class Livro implements Serializable {
 
 	/**
@@ -17,8 +16,7 @@ public class Livro implements Serializable {
 	private static final long serialVersionUID = 6091972798183480861L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+	private String id;
 
 	@NotEmpty
 	private String title;
@@ -35,7 +33,16 @@ public class Livro implements Serializable {
 	public Livro() {
 	}
 	
-	public Livro(Long id, @NotEmpty String title, @NotEmpty String description, @NotEmpty String isbn,
+	public Livro(@NotEmpty String title, @NotEmpty String description, @NotEmpty String isbn,
+			@NotEmpty String language) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.isbn = isbn;
+		this.language = language;
+	}
+
+	public Livro(String id, @NotEmpty String title, @NotEmpty String description, @NotEmpty String isbn,
 			@NotEmpty String language) {
 		super();
 		this.id = id;
@@ -48,14 +55,14 @@ public class Livro implements Serializable {
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public String getId() {
 		return id;
 	}
 
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(String id) {
 		this.id = id;
 	}
 
