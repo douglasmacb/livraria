@@ -18,7 +18,7 @@ Clone environment from github.
 sudo git clone https://github.com/douglasmacb/livraria.git
 ```
 
-After that, use maven to install
+After that, use maven tool to build and generate a executable jar file
 
 ```bash
 $ mvn clean install -U
