@@ -39,7 +39,7 @@ public class LivrariaApplication {
     
     private ApiInfo apiInfo() {
         ApiInfo apiInfo = new ApiInfo( 
-              "Livraria application to get information about Kotlin books",
+              "Book Application",
               "This is a simple application proposed by GuiaBolso to know my developer skills",
               "Free to use and mess around",
               "lorem@ipsum.com",
