@@ -1,6 +1,5 @@
 # livraria
-Livraria GuiaBolso Interview 
-It is a simple application to find books from Kotlin main page, using scraping methods.
+Livraria GuiaBolso Interview - It is a simple application to find books from Kotlin main page using scraping methods.
 
 ## # Step 1
 
