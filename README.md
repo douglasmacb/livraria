@@ -3,7 +3,7 @@ Livraria GuiaBolso Interview - It's a simple application to find books from Kotl
 
 ## # Step 1
 
-Create a new collection in mongodb
+We are using mLab cloud-hosted MongoDB free services to provide a NoSQL database for the interview test, but if you want to execute in localhost, you will need create a collection into livraria.
 
 ```bash
 use livraria;
