@@ -33,13 +33,17 @@ java -jar livraria-1.0.jar
 ```
 
 
-
 ## How to test application
+
+You may get API details using Swagger UI when application is running
+```bash
+http://localhost:8092/sdoc.jsp
+```
 
 ### Find a Book
 ```bash
 $ curl -X GET \
-  http://localhost:8080/books/5c425ccacdd3c03419e98799 \
+  http://localhost:8092/books/5c425ccacdd3c03419e98799 \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' \
   -d 8881153
@@ -48,7 +52,7 @@ $ curl -X GET \
 ### GET All Books
 ```bash
 $ curl -X GET \
-  'http://localhost:8080/books' \
+  'http://localhost:8092/books' \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' 
   ```
