@@ -24,8 +24,8 @@ public class LivroHelper {
 	
 	final static String rx1 = "^\\d{9}[\\d|X]$";
 	final static String rx2 = "ISBN\\x20(?=.{13}$)\\d{1,5}([- ])\\d{1,7}\\1\\d{1,6}\\1(\\d|X)$";
-	final static String rx3 = "\\d{3}-?\\d{10}";
-	final static String rx4 = "ISBN-13.*(978[-]*\\d{10}) ";
+	final static String rx3 = "\\d{3}-?\\d{10,12}";
+	final static String rx4 = "ISBN-13.*(978[-]*\\d{10})";
 	final static String rx5 = "^(97(8|9))?\\d{9}(\\d|X)$";
 	
 	final static List<Pattern> rxs = Arrays.asList(
@@ -63,7 +63,7 @@ public class LivroHelper {
 			listaIsbn = obterListaIsbn(linksPaginasLivros);
 			
 			for(Integer i = 0; i < titulos.size(); i++) {
-				livros.add(new Livro(i.toString(), titulos.get(i).text(), descricoes[i+1], listaIsbn.get(i), linguagens.get(i).text()));
+				livros.add(new Livro(titulos.get(i).text(), descricoes[i+1], listaIsbn.get(i), linguagens.get(i).text()));
 			}
 		}
 		return livros;
@@ -103,7 +103,7 @@ public class LivroHelper {
 
 	public static String[] obterDescricoes(Elements artigo) {
 		
-		LOGGER.info("Obtendo a descrição dos livros...");
+		LOGGER.info("Obtendo as descrições...");
 		
 		int indice = 0;
 		Elements elementos = artigo.select("h2, p");

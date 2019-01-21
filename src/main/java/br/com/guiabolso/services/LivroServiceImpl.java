@@ -10,6 +10,7 @@ import org.jsoup.nodes.Document;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import br.com.guiabolso.domain.Livro;
@@ -26,7 +27,8 @@ public class LivroServiceImpl implements LivroService {
 	@Autowired
 	public LivroRepository livroRepository;
 	
-	@Override
+	@Override	
+	@Cacheable(value = "book")
 	public Optional<Livro> buscar(String id) {
 		LOGGER.info("Acessando o banco de dados para buscar o livro id : {} ", id);
 		return livroRepository.findById(id);
@@ -39,6 +41,7 @@ public class LivroServiceImpl implements LivroService {
 	}
 
 	@Override
+	@Cacheable(value = "books")
 	public LivroResponse buscar() {
 		
 		LOGGER.info("Buscando os livros do website : {} ", LivroHelper.URL_BOOKS);
@@ -46,17 +49,22 @@ public class LivroServiceImpl implements LivroService {
 		List<Livro> livros = new ArrayList<Livro>();
 		
 		try {
-			Document documento = Jsoup.connect(LivroHelper.URL_BOOKS).get();
-			if(documento != null) {
-				livros = LivroHelper.montaLivros(documento);
-				if(livros != null) {
-					response.setBooks(livros);
-					response.setNumberBooks(livros.size());
+			livros = livroRepository.findAll();
+			
+			if(livros.size() == 0) {			
+				Document documento = Jsoup.connect(LivroHelper.URL_BOOKS).get();
+				if(documento != null) {
+					livros = LivroHelper.montaLivros(documento);
+					if(livros != null && livros.size() > 0) {						
+						livroRepository.saveAll(livros);
+					}
 				}
 			}
+			response.setBooks(livros);
+			response.setNumberBooks(livros.size());
 		} catch (IOException e) {
 			LOGGER.error(e.getMessage());
-			throw new LivroNotFoundException(e.getMessage());
+			throw new LivroNotFoundException(e);
 		}
 		return response;
 	}

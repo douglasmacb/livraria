@@ -1,6 +1,5 @@
 package br.com.guiabolso.exceptions;
 
-import org.bson.types.ObjectId;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
@@ -12,11 +11,11 @@ public class LivroNotFoundException extends RuntimeException {
 	 */
 	private static final long serialVersionUID = -5139260401833602486L;
 	
-	public LivroNotFoundException(String message) {
-		super(message);
+	public LivroNotFoundException(Exception e) {
+		super(e.getMessage());
 	}
 	
-	public LivroNotFoundException(ObjectId id) {
+	public LivroNotFoundException(String id) {
 		super("Livro não encontrado: " + id);
 	}
 

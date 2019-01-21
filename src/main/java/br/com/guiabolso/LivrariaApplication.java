@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,6 +17,7 @@ import com.mangofactory.swagger.plugin.SwaggerSpringMvcPlugin;
 @SpringBootApplication
 @Configuration
 @EnableSwagger
+@EnableCaching
 @EntityScan(basePackages = { "br.com.guiabolso.domain" })
 @ComponentScan(basePackages = { "br.com.guiabolso.controllers", "br.com.guiabolso.services" })
 public class LivrariaApplication {
