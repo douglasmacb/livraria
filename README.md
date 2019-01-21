@@ -1,9 +1,10 @@
 # livraria
-Livraria GuiaBolso Interview - It's a simple application to find books from Kotlin main page using regex to get ISBN code.
+Livraria GuiaBolso Interview 
+It is a simple application to find books from Kotlin main page, using scraping methods.
 
 ## # Step 1
 
-We are using mLab cloud-hosted MongoDB free services to provide a NoSQL database for the interview test, but if you want to execute in localhost, you will need create a collection into livraria.
+We are using mLab cloud-hosted MongoDB free services to provide a NoSQL database for the interview test, but if you want to execute in localhost database, you will need create a collection into livraria.
 
 ```bash
 use livraria;
