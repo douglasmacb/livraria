@@ -45,8 +45,7 @@ http://localhost:8092/sdoc.jsp
 $ curl -X GET \
   http://localhost:8092/books/5c425ccacdd3c03419e98799 \
   -H 'Cache-Control: no-cache' \
-  -H 'Content-Type: application/json' \
-  -d 8881153
+  -H 'Content-Type: application/json' 
 ```
 
 ### GET All Books
