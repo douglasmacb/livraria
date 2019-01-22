@@ -1,5 +1,7 @@
 FROM java:8
+LABEL maintainer="douglasmacbrito@gmail.com"
 VOLUME /tmp
-ADD /target/livraria-1.0.jar app.jar
-RUN bash -c 'touch /app.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+EXPOSE 8092
+ARG JAR_FILE=target/livraria-1.0.jar
+ADD ${JAR_FILE} livraria-1.0.jar
+ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/livraria-1.0.jar"]
