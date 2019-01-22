@@ -29,10 +29,14 @@ $ sudo mvn clean install -U
 You need stay in root directory where Dockerfile exists to execute docker build to create a container image.
 
 ```bash
-docker build -t livraria .
+sudo docker build -t livraria .
 
 ```
-docker run -p 8092:8092 livraria
+Run the application
+
+```bash
+sudo docker run -p 8092:8092 livraria
+```
 
 ## How to test application
 
