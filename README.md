@@ -26,11 +26,17 @@ $ sudo mvn clean install -U
 
 ## # Step 3
 
-You need stay in root directory where Dockerfile exists to execute docker build to create a container image.
+Install Docker
+
+```bash
+$ sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+$ sudo apt-get install docker-ce
+```
+
+After install, you need stay in root project directory where Dockerfile exists to execute docker build to create a container image.
 
 ```bash
 $ sudo docker build -t livraria .
-
 ```
 Run the application
 
