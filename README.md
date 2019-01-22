@@ -35,20 +35,20 @@ $ sudo docker build -t livraria .
 Run the application
 
 ```bash
-$ sudo docker run -p 8092:8092 livraria
+$ sudo docker run -p 5000:8080 livraria
 ```
 
 ## How to test application
 
 You may get API details using Swagger UI when application is running.
 ```bash
-http://localhost:8092/sdoc.jsp
+http://localhost:5000/sdoc.jsp
 ```
 
 ### Find a Book
 ```bash
 $ curl -X GET \
-  http://localhost:8092/books/5c425ccacdd3c03419e98799 \
+  http://localhost:5000/books/5c425ccacdd3c03419e98799 \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' 
 ```
@@ -56,7 +56,7 @@ $ curl -X GET \
 ### GET All Books
 ```bash
 $ curl -X GET \
-  'http://localhost:8092/books' \
+  'http://localhost:5000/books' \
   -H 'Cache-Control: no-cache' \
   -H 'Content-Type: application/json' 
   ```
