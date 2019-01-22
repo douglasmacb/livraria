@@ -26,7 +26,7 @@ $ sudo mvn clean install -U
 
 ## # Step 3
 
-Install Docker
+Install Docker.
 
 ```bash
 $ sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
@@ -34,12 +34,12 @@ $ sudo apt-get update
 $ sudo apt-get install docker-ce
 ```
 
-After install, you need stay in project root directory where Dockerfile exists to execute docker build.
+After install, stay in project root directory where Dockerfile exists to execute docker build.
 
 ```bash
 $ sudo docker build -t livraria .
 ```
-Run the application in container
+Run the application in Docker container.
 
 ```bash
 $ sudo docker run -p 5000:8080 livraria
