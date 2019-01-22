@@ -18,24 +18,25 @@ Clone environment from github.
 sudo git clone https://github.com/douglasmacb/livraria.git
 ```
 
-After that, use maven tool to build and generate a executable jar file
+After that, use maven tool to build the project.
 
 ```bash
-$ mvn clean install -U
+$ sudo mvn clean install -U
 ```
 
 ## # Step 3
 
-Open target folder and run jar file to start the application
+You need stay in root directory where Dockerfile exists to execute docker build to create a container image.
 
 ```bash
-java -jar livraria-1.0.jar
-```
+docker build -t livraria .
 
+```
+docker run -p 8092:8092 livraria
 
 ## How to test application
 
-You may get API details using Swagger UI when application is running
+You may get API details using Swagger UI when application is running.
 ```bash
 http://localhost:8092/sdoc.jsp
 ```
