@@ -6,8 +6,8 @@ Livraria GuiaBolso Interview - It is a simple application to find books from Kot
 We are using mLab cloud-hosted MongoDB free services to provide a NoSQL database for the interview test, but if you want to execute in localhost database, you will need create a collection into livraria.
 
 ```bash
-use livraria;
-db.createCollection("livro");
+$ use livraria;
+$ db.createCollection("livro");
 ```
 
 ## # Step 2
@@ -15,7 +15,7 @@ db.createCollection("livro");
 Clone environment from github.
 
 ```bash
-sudo git clone https://github.com/douglasmacb/livraria.git
+$ sudo git clone https://github.com/douglasmacb/livraria.git
 ```
 
 After that, use maven tool to build the project.
@@ -29,13 +29,13 @@ $ sudo mvn clean install -U
 You need stay in root directory where Dockerfile exists to execute docker build to create a container image.
 
 ```bash
-sudo docker build -t livraria .
+$ sudo docker build -t livraria .
 
 ```
 Run the application
 
 ```bash
-sudo docker run -p 8092:8092 livraria
+$ sudo docker run -p 8092:8092 livraria
 ```
 
 ## How to test application
