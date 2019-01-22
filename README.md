@@ -39,7 +39,7 @@ After install, you need stay in project root directory where Dockerfile exists t
 ```bash
 $ sudo docker build -t livraria .
 ```
-Run the application
+Run the application in container
 
 ```bash
 $ sudo docker run -p 5000:8080 livraria
