@@ -34,7 +34,7 @@ $ sudo apt-get update
 $ sudo apt-get install docker-ce
 ```
 
-After install, you need stay in project root directory where Dockerfile exists to execute docker build to create a container image.
+After install, you need stay in project root directory where Dockerfile exists to execute docker build.
 
 ```bash
 $ sudo docker build -t livraria .
