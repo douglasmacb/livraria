@@ -3,7 +3,7 @@ Livraria GuiaBolso Interview - It is a simple application to find books from Kot
 
 ## # Step 1
 
-We are using mLab cloud-hosted MongoDB free services to provide a NoSQL database for the interview test, but if you want to execute in localhost database, you will need create a collection into livraria.
+We are using mLab cloud-hosted MongoDB free services to provide a NoSQL database for the interview test, but if you want to execute in localhost database, you will need create a collection into livraria and change application.properties with localhost database settings.
 
 ```bash
 $ use livraria;
